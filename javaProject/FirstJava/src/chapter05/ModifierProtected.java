@@ -1,6 +1,6 @@
 package chapter05;
 
-class ModifierProtected {
+public class ModifierProtected {
 	
 	protected String name;
 	protected int age;
