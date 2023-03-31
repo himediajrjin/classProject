@@ -11,7 +11,5 @@ public class AndroidPhone extends Phone {
 		super.call();
 		System.out.println("안드로이드 폰으로 통화");
 	}
-	
-	
 
 }
