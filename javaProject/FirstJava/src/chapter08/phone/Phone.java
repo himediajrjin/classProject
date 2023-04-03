@@ -6,11 +6,11 @@ public interface Phone {
 	// 인터페이스에는 변수는 상수형태로만 구성된다.
 	public static final int PHONE_NUM_1 = 1;
 	// public static final 생략 가능
-	int PHONE_NUM_2 = 2;
-	int PHONE_NUM_3 = 3;
-	int PHONE_NUM_4 = 4;
-	int PHONE_NUM_5 = 5;
-	int PHONE_NUM_6 = 6;
+	public int PHONE_NUM_2 = 2;
+	static int PHONE_NUM_3 = 3;
+	final int PHONE_NUM_4 = 4;
+	public static int PHONE_NUM_5 = 5;
+	public final int PHONE_NUM_6 = 6;
 	int PHONE_NUM_7 = 7;
 	int PHONE_NUM_8 = 8;
 	int PHONE_NUM_9 = 9;
