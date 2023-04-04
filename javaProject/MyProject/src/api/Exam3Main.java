@@ -39,7 +39,7 @@ public class Exam3Main {
 		// result = false;
 		for(int i=0; i<name.length(); i++) {
 			char c = name.charAt(i);
-			if(!(c>='a' && c<='z' || c>='A' && c<='Z')) {
+			if(!(c>='a' && c<='z' || c>='A' && c<='Z' || c>='0' && c<='9')) {
 				result = false;
 				break;
 			}
