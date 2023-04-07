@@ -51,6 +51,34 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	
+
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.age;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		boolean result = false;
+		
+		if(obj != null && obj instanceof FootballPlayer)	{
+			FootballPlayer player = (FootballPlayer)obj;
+			result = this.team.equals(player.getTeam()) 
+					&& this.name.equals(player.getName()) 
+					&& this.age==player.getAge();
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
 
 	@Override
 	public String toString() {
