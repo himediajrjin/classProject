@@ -97,4 +97,56 @@ order by c.custid
 
 select avg(saleprice) from orders;
 
+-- 3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
+-- (1) 박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
+-- orders, book => publisher in ( )
+-- 박지성이 구매한 도서의 출판사 이름
+select distinct b.publisher
+from orders o, book b, customer c
+where o.bookid=b.bookid and o.custid=c.custid
+and c.name='박지성'
+;
+select c.name
+from orders o, book b, customer c
+where o.bookid=b.bookid and o.custid=c.custid
+and b.publisher in (select distinct b.publisher
+    from orders o, book b, customer c
+    where o.bookid=b.bookid and o.custid=c.custid
+    and c.name='박지성')
+and c.name <> '박지성'
+;
+
+-- (2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
+-- group by custid, name
+-- 고객별 구매한 도서의 출판사의 수
+select c.custid, c.name, count(distinct b.publisher)
+from orders o, book b, customer c
+where o.bookid=b.bookid and o.custid=c.custid
+group by c.custid, c.name
+having count(distinct b.publisher) > 1
+;
+
+-- 2개 이상의 출판사의 책을 구매한 회원 id
+select *
+from customer
+where custid in (select o.custid
+    from orders o, book b
+    where o.bookid=b.bookid
+    group by o.custid
+    having count(distinct b.publisher) > 1)
+;
+
+select o.custid
+from orders o, book b
+where o.bookid=b.bookid
+group by o.custid
+having count(distinct b.publisher) > 1
+;
+
+
+
+
+
+
+
 
