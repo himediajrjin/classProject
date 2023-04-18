@@ -1,26 +1,29 @@
 
-
--- 전화번호 저장 테이블
-CREATE TABLE PHONEINFO_BASIC(
-IDX NUMBER(6) CONSTRAINT PIB_IDX_PK PRIMARY KEY,
-FR_NAME VARCHAR2(20) CONSTRAINT PIB_NAME_NN NOT NULL,
-FR_PHONENUMBER VARCHAR2(20) CONSTRAINT PIB_PN_NN NOT NULL,
-FR_EMAIL VARCHAR2(20),
-FR_ADDRESS VARCHAR2(20),
-FR_REGDATE DATE DEFAULT SYSDATE
+-- PhoneBook DDL : 테이블 정의서 를 참고 해서 DDL 장성한다.
+CREATE table phoneInfo_basic (
+    idx number(6) constraint pi_basic_idx_PK primary key,
+    fr_name VARCHAR2(20) not null,
+    fr_phonenumber varchar2(20) not null,
+    fr_email varchar2(20) ,
+    fr_address varchar2(20),
+    fr_regdate date default sysdate
 );
 
-CREATE TABLE PHONEINFO_UNIV(
-IDX NUMBER(6) CONSTRAINT PIU_IDX_PK PRIMARY KEY,
-FR_U_MAJOR VARCHAR2(20) DEFAULT 'N' CONSTRAINT PIU_MAJOR_NN NOT NULL,
-FR_U_YEAR NUMBER(1) DEFAULT '1' 
-                    CONSTRAINT PIU_YEAR_NN NOT NULL 
-                    CONSTRAINT PIU_YEAR_CHECK CHECK(0 < FR_U_YEAR AND FR_U_YEAR < 5),
-FR_REF NUMBER(7) CONSTRAINT PIU_REF_FK REFERENCES PHONEINFO_BASIC(IDX) NOT NULL
+-- phoneinfo_univ
+create table phoneinfo_univ (
+    idx number(6),
+    fr_u_major VARCHAR2(20) default 'N' not null,
+    fr_u_year number(1) default 1  not null, --check (fr_u_year between 1 and 4),
+    fr_ref number(6) not null,
+    constraint pi_univ_idx_PK primary key (idx),
+    constraint chk check (fr_u_year between 1 and 4), -- 테이블 레벨에서 check  제약 설정 
+    constraint pi_univ_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic (idx)
 );
 
-CREATE TABLE PHONEINFO_COM(
-IDX NUMBER(6) CONSTRAINT PIC_IDX_PK PRIMARY KEY,
-FR_C_COMPANY VARCHAR2(20) DEFAULT 'N' CONSTRAINT PIC_COMPANY_NN NOT NULL,
-FR_REF NUMBER(6) CONSTRAINT PIC_REF_FK REFERENCES PHONEINFO_BASIC(IDX) NOT NULL
+
+-- phoneinfo_com
+create table phoneinfo_com (
+    idx number(6) constraint pi_com_idx_PK primary key,
+    fr_c_company VARCHAR2(20) default 'N' not null,
+    fr_ref number(6) not null constraint pi_com_ref_FK REFERENCES phoneinfo_basic (idx)
 );
