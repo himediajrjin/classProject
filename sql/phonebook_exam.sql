@@ -13,18 +13,23 @@ CREATE table phoneInfo_basic (
     fr_address varchar2(20),
     fr_regdate date default sysdate
 );
+
+-- sequence 생성
+create sequence seq_pbasic_idx;
+
+
 -- INSERT : CREATE
 DESC phoneinfo_basic;
 insert into phoneinfo_basic
-values (1, 'KING', '010-0000-0000', 'king@gmail.com', 'KOREA', default)
+values (seq_pbasic_idx.nextval, 'KING', '010-0000-0000', 'king@gmail.com', 'KOREA', default)
 ;
 
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber)
-values (2, 'SCOTT', '010-9999-9999')
+values (seq_pbasic_idx.nextval, 'SCOTT', '010-9999-9999')
 ;
 
 -- SELECT : READ
-select fr_name from phoneinfo_basic;
+select * from phoneinfo_basic;
 select * from phoneinfo_basic where idx=1;
 select * from phoneinfo_basic where idx=2;
 
@@ -56,14 +61,17 @@ create table phoneinfo_univ (
     constraint pi_univ_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic (idx)
 );
 
+-- sequence 생성
+create sequence seq_puniv_idx;
+
 -- 대학친구의 정보를 입력
 -- 1 basic 정보 입력
 insert into phoneinfo_basic
-values (3, 'SON', '010-1111-1111', 'son@gmail.com', 'KOREA', default)
+values (seq_pbasic_idx.nextval, 'SON', '010-1111-1111', 'son@gmail.com', 'KOREA', default)
 ;
 -- 2. univ 정보 입력
 insert into phoneinfo_univ
-values (1, 'COMPUTER', 4, 3)
+values (seq_puniv_idx.nextval, 'COMPUTER', 4, seq_pbasic_idx.currval)
 ;
 
 -- SELECT : READ   데이터 검색
@@ -98,14 +106,18 @@ create table phoneinfo_com (
     fr_ref number(6) not null constraint pi_com_ref_FK REFERENCES phoneinfo_basic (idx)
 );
 
+-- sequence 생성
+create sequence seq_pcom_idx;
+
+
 -- INSERT : CREATE
 insert into phoneinfo_basic
-values (4, 'PARK', '010-7777-7777', 'park@gmail.com', 'LONDON', default)
+values (seq_pbasic_idx.nextval, 'PARK', '010-7777-7777', 'park@gmail.com', 'LONDON', default)
 ;
-insert into phoneinfo_com values (1, 'NAVER', 4);
+insert into phoneinfo_com values (seq_pcom_idx.nextval, 'NAVER', seq_pbasic_idx.currval);
 
 -- SELECT : READ
-select pb.idx, pc.idx, fr_name, pb.fr_phonenumber, pb.fr_email, pb.fr_address, pc.fr_c_company
+select * -- pb.idx, pc.idx, fr_name, pb.fr_phonenumber, pb.fr_email, pb.fr_address, pc.fr_c_company
 from phoneinfo_basic pb , phoneinfo_com pc
 where pb.idx=pc.fr_ref
 ;
