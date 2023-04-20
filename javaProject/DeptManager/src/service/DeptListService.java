@@ -19,6 +19,7 @@ public class DeptListService {
 	public List<Dept> getDeptList() {
 		
 		Connection conn = null;
+		List<Dept> list = null;
 		
 		try {
 			// Connection 객체 구하기
@@ -34,17 +35,46 @@ public class DeptListService {
 			// update(conn)
 			// insert(conn)
 			
-			// commit
+			list = dao.selectByAll(conn);
+			
+			// commit : 완료!
 			conn.commit();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// 예외 발생 -> rollback
+			if(conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
 			e.printStackTrace();
 		}
 		
-		
-		return null;
+		return list;
 
 	}
+	
+	
+	public static void main(String[] args) {
+		
+		DeptListService listService = new DeptListService(new DeptDao());
+		
+		List<Dept> list = listService.getDeptList();
+		
+		for(Dept d : list) {
+			System.out.println(d);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
