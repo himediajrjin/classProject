@@ -7,6 +7,7 @@ import java.util.List;
 
 import dao.DeptDao;
 import domain.Dept;
+import util.ConnectionProvider;
 
 public class DeptListService {
 
@@ -23,8 +24,10 @@ public class DeptListService {
 		
 		try {
 			// Connection 객체 구하기
-			String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-			conn = DriverManager.getConnection(dbUrl, "hr", "tiger");
+			//String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+			//conn = DriverManager.getConnection(dbUrl, "hr", "tiger");
+			
+			conn = ConnectionProvider.getConnection();
 			
 			// 트랜젝션 시작
 			conn.setAutoCommit(false);
@@ -58,11 +61,9 @@ public class DeptListService {
 
 	}
 	
-	
 	public static void main(String[] args) {
 		
 		DeptListService listService = new DeptListService(new DeptDao());
-		
 		List<Dept> list = listService.getDeptList();
 		
 		for(Dept d : list) {
@@ -71,10 +72,4 @@ public class DeptListService {
 		
 	}
 	
-	
-	
-	
-	
-	
-
 }
