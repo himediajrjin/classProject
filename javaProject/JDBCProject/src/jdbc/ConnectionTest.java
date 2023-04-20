@@ -17,12 +17,12 @@ public class ConnectionTest {
 			// 2. Conection 객체를 생성 : 연결 정보
 			// jdbcUrl
 			// Oracle 연결
-			//String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-			//Connection conn = DriverManager.getConnection(dbUrl, "hr", "tiger");
+			String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+			Connection conn = DriverManager.getConnection(dbUrl, "hr", "tiger");
 			
 			// Mysql 연결
-			String dbUrl = "jdbc:mysql://localhost:3306/project";
-			Connection conn = DriverManager.getConnection(dbUrl, "himedia", "tiger");
+			//String dbUrl = "jdbc:mysql://localhost:3306/project";
+			//Connection conn = DriverManager.getConnection(dbUrl, "himedia", "tiger");
 			
 			// 3. Statement / PreparedStatement => sql 실행 요청 메소드
 			

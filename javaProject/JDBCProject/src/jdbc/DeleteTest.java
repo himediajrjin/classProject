@@ -33,7 +33,8 @@ public class DeleteTest {
 			// insert Sql
 			String sql = "delete from dept where deptno=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, 50);
+			pstmt.setInt(1, 10);
+			
 						
 			int result = pstmt.executeUpdate();
 			
