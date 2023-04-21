@@ -23,6 +23,7 @@ public class DeptListController implements Controller {
 		return controller;
 	}
 
+	@Override
 	public void process() {
 		
 		// 사용자 요청 분석
