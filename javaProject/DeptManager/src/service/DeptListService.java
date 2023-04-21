@@ -13,8 +13,14 @@ public class DeptListService {
 
 	DeptDao dao;
 
-	public DeptListService() {
+	private DeptListService() {
 		this.dao = DeptDao.getInstance();
+	}
+	
+	private static DeptListService service = new DeptListService();
+	
+	public static DeptListService getInstance() {
+		return service;
 	}
 
 	public List<Dept> getDeptList() {

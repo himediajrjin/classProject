@@ -6,15 +6,21 @@ import domain.Dept;
 import main.DeptManagerMain;
 import service.DeptInsertService;
 
-public class DeptInsertController {
+public class DeptInsertController implements Controller{
 	
 	DeptInsertService insertService;
 	
-	public DeptInsertController() {
-		this.insertService = new DeptInsertService();
+	private DeptInsertController() {
+		this.insertService = DeptInsertService.getInstance();
+	}
+	
+	private static DeptInsertController controller = new DeptInsertController();
+	
+	public static DeptInsertController getInstance() {
+		return controller;
 	}
 
-	public void insertDept() {
+	public void process() {
 		// 1. 자용자 입력 처리 -> Dept 타입의 객체를 반환
 		Dept dept = inputDept();
 		

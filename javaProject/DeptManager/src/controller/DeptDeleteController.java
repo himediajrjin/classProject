@@ -8,17 +8,23 @@ import main.DeptManagerMain;
 import service.DeptDeleteService;
 import service.DeptListService;
 
-public class DeptDeleteController {
+public class DeptDeleteController implements Controller{
 
 	DeptListService listService;
 	DeptDeleteService deleteService;
 
-	public DeptDeleteController() {
-		this.listService = new DeptListService(new DeptDao());
-		this.deleteService = new DeptDeleteService();
+	private DeptDeleteController() {
+		this.listService = DeptListService.getInstance();
+		this.deleteService = DeptDeleteService.getInstance();
+	}
+	
+	private static DeptDeleteController controller = new DeptDeleteController();
+	
+	public static DeptDeleteController getInstance() {
+		return controller;
 	}
 
-	public void deleteDept() {
+	public void process() {
 
 		// 1. 사용자로부터 삭제할 부서번호를 받는다
 		//    부서의 전체 리스트를 출력하고 번호 입력 요청
