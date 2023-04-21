@@ -123,9 +123,75 @@ public class DeptDao {
 		
 	}
 
-	// 3. 부서 정보 입력
+	// 3. 부서 정보 입력 : deptno, dname, loc
+	public int insertDept(Connection conn, Dept dept) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		// Insert Sql
+		String sql = "insert into dept values (?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dept.getDeptno());
+			pstmt.setString(2, dept.getDname());
+			pstmt.setString(3, dept.getLoc());
+			
+			result = pstmt.executeUpdate();	
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
 
-	// 4. 부서 정보 수정
+	// 4. 부서 정보 수정 : deptno, dname, loc
+	public int updateDeptByDeptno(Connection conn, Dept dept) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		// Update Sql
+		String sql = "update dept set dname=?, loc=? where deptno=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dept.getDname());
+			pstmt.setString(2, dept.getLoc());
+			pstmt.setInt(3, dept.getDeptno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+		
+	}
+	
 
 	// 5. 부서 정보 삭제
 
@@ -142,8 +208,15 @@ public class DeptDao {
 			System.out.println(dept);
 		}
 		
-		Dept dept = dao.selectByDeptno(conn, 10);
+		Dept dept = dao.selectByDeptno(conn, 50);
 		System.out.println("결과 : " + dept);
+		
+		//int insertResult = dao.insertDept(conn, new Dept(50, "Test", "Seoul"));
+		//System.out.println("저장 결과 : " + insertResult);
+		
+		Dept d = new Dept (50, "TTT", "QQQ"); // 수정하고자하는 부서 정보
+		int updateResult = dao.updateDeptByDeptno(conn, d);
+		System.out.println(updateResult);
 
 	}
 
