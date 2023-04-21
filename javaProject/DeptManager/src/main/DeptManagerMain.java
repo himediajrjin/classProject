@@ -2,6 +2,7 @@ package main;
 
 import java.util.Scanner;
 
+import controller.DeptDeleteController;
 import controller.DeptInsertController;
 import controller.DeptListController;
 import controller.DeptSearchController;
@@ -42,6 +43,9 @@ public class DeptManagerMain {
 				break;
 			case 4 : 
 				new DeptUpdateController().updateDept();
+				break;
+			case 5:
+				new DeptDeleteController().deleteDept();
 				break;
 			case 6:
 				return;

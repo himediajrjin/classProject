@@ -19,13 +19,7 @@ public class DeptInsertController {
 		Dept dept = inputDept();
 		
 		// 2. Dept 객체를 Service 로 전달 => 결과 반환(1 or 0)
-		int result = 0;
-		try {
-			result = insertService.insertDept(dept);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		int result = insertService.insertDept(dept);
 		
 		// 3. 결과 출력
 		printData(result);

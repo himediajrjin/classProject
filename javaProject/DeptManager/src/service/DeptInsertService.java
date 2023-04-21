@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import dao.DeptDao;
@@ -14,12 +15,35 @@ public class DeptInsertService {
 		this.dao = new DeptDao();
 	}
 	
-	public int insertDept(Dept dept) throws SQLException {
+	public int insertDept(Dept dept){
 		
 		// RequestDept => dname, loc
 		// 데이터 가공		
-		// Transaction		
-		return dao.insertDept(ConnectionProvider.getConnection(), dept);
+		// Transaction	
+		
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = ConnectionProvider.getConnection();
+			
+			result = dao.insertDept(conn, dept);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
 		
 	}
 	
