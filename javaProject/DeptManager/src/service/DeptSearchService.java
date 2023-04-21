@@ -22,11 +22,7 @@ public class DeptSearchService {
 		Dept dept = null;
 
 		try {
-			
-			
-			
-			
-			
+						
 			conn = ConnectionProvider.getConnection();
 			dept = dao.selectByDeptno(conn, deptno);
 			
