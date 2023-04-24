@@ -25,6 +25,7 @@ update dept set dname = 'AAA', loc = 'BBB' where deptno = 60;
 delete from dept where deptno = 60;
 -- delete from dept where deptno = ?
 
+rollback;
 
 
 
