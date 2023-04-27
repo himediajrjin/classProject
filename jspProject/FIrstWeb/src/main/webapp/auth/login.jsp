@@ -1,14 +1,5 @@
-<%@ page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	Date now = new Date();
-
-	request.getParameter("age");
-	
-	out.println(111);
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +8,7 @@
 </head>
 <body>
 
-	<h1>안녕하세요!!!!</h1>
-	<h3><%= now %></h3>
-	
+	<h1>로그인 처리페이지</h1>
 
 </body>
 </html>
