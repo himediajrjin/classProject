@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/input")
 public class InputController extends HttpServlet {
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(
+			HttpServletRequest request, 
+			HttpServletResponse response) throws ServletException, IOException {
 
+		
 		System.out.println("InputController.....");
 		
 		request.setAttribute("title", "계산기123");
