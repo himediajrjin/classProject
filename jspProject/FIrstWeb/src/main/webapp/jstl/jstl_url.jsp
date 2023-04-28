@@ -23,7 +23,9 @@
 		<c:param name="code" value="123"/>
 	</c:url>
 	
-	${url}
+	${url} <br>
+	
+	${pageContext.request.contextPath}/el/elObject.jsp
 	
 	<br>
 	
