@@ -24,9 +24,15 @@
 	
 	
 	<fmt:formatDate value="${now}" type="time"/> <br>
+	<fmt:formatDate value="${now}" type="time" timeStyle="full"/> <br>
+	<fmt:formatDate value="${now}" type="time" timeStyle="short"/> <br>
 	
+	<hr>
+	<fmt:formatDate value="${now}" type="both"/> <br>
+	<fmt:formatDate value="${now}" type="both" dateStyle="full" timeStyle="full"/> <br>
 	
-	
+	<hr>
+	<fmt:formatDate value="${now}" pattern="yyyy. MM. dd. HH:mm"/> <br>
 	
 	
 	
