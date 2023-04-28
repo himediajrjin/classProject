@@ -13,6 +13,15 @@
 </style>
 </head>
 <body>
+	
+	<c:forEach var="member" items="${members}" >
+		
+		<c:out value="${member.name}" escapeXml="false" default="noname"/>
+		<br>	
+	</c:forEach>
+
+
+<hr>
 
 	${members[0]} <br>
 	${members[1]} / ${members[1].name} / ${members[0].name}<br>
