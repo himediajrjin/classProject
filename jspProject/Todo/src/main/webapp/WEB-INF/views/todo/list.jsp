@@ -10,11 +10,11 @@
 <h1>Todo LIST</h1>
 
 <ul>
-	<li><a href="${pageContext.request.contextPath}/todo/read">1. 청소 </a> 2023-05-01 DONE </li>
-	<li>1. 청소 2023-05-01 DONE </li>
-	<li>1. 청소 2023-05-01 DONE </li>
-	<li>1. 청소 2023-05-01 DONE </li>
-	<li>1. 청소 2023-05-01 DONE </li>
+	<li><a href="${pageContext.request.contextPath}/todo/read?no=1">1. 청소 </a> 2023-05-01 DONE </li>
+	<li><a href="${pageContext.request.contextPath}/todo/read?no=2">2. 청소 </a> 2023-05-01 DONE </li>
+	<li><a href="${pageContext.request.contextPath}/todo/read?no=3">3. 청소 </a> 2023-05-01 DONE </li>
+	<li><a href="${pageContext.request.contextPath}/todo/read?no=4">4. 청소 </a> 2023-05-01 DONE </li>
+	<li><a href="${pageContext.request.contextPath}/todo/read?no=5">5. 청소 </a> 2023-05-01 DONE </li>
 </ul>
 
 <a href="${pageContext.request.contextPath}/todo/register">Todo Register</a>
