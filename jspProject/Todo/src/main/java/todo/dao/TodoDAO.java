@@ -80,7 +80,7 @@ public class TodoDAO {
 	
 	
 	// tno 값을 받아서 해당 Todo 정보(TodoDTO) 를 반환하는 메소드
-	public TodoDTO selectByTno(Connection conn, int tno) {
+	public TodoDTO selectByTno(Connection conn, int tno) { // 2
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -165,7 +165,46 @@ public class TodoDAO {
 	}
 	
 	
-	
+	// TodoDTO 전달 받고
+	// update 
+	public int updateByTno(Connection conn, TodoDTO todo) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		// update sql
+		String sql = "update tbl_todo set todo=?, duedate=?, finished=? where tno=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			// set
+			pstmt.setString(1, todo.getTodo());
+			pstmt.setString(2, todo.getDuedate());
+			pstmt.setInt(3, todo.isFinished() ? 1 : 0);
+			pstmt.setInt(4, todo.getTno());
+			
+			// result
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		return result;
+		
+	}
 	
 	
 	
@@ -180,12 +219,23 @@ public class TodoDAO {
 		TodoDAO dao = TodoDAO.getInstance();
 		Connection conn = ConnectionProvider.getConnection();
 		
+		// slectAll test
 //		List<TodoDTO> list = dao.selectByAll(conn);
 //		for(TodoDTO todo : list) {
 //			System.out.println(todo);
 //		}
 		
-		dao.insertTodo(conn, new RequestTodo("회의", "2023-05-03"));
+		// insert test
+//		dao.insertTodo(conn, new RequestTodo("회의", "2023-05-03"));
+//		System.out.println("입력완료");
+		
+		
+		// selectByTno test
+		TodoDTO todo = dao.selectByTno(conn, 2);
+		System.out.println(todo);
+		
+		
+		
 		
 				
 		conn.close();

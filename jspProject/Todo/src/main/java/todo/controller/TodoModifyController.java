@@ -10,20 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import todo.domain.Todo;
+import todo.domain.TodoDTO;
+import todo.service.TodoViewService;
 
 
 @WebServlet("/todo/modify")
 public class TodoModifyController extends HttpServlet {
+	
+	TodoViewService viewService;
+	
+	public TodoModifyController() {
+		this.viewService = TodoViewService.getInstance();
+	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 수정 폼 : 이전에 입력했던 데이터가 화면에 출력
 		
 		// no 값을 받고
 		String noStr = request.getParameter("no");
-		int no = Integer.parseInt(noStr);
+		int no = Integer.parseInt(noStr); // modify?no=2
 		
 		// no 값에 해당하는 Todo 데이터를 Service를 통해서 받고
-		Todo todo = new Todo(no, "청소", "2023-05-04", "not");
+		//Todo todo = new Todo(no, "청소", "2023-05-04", "not");
+		TodoDTO todo = viewService.getTodo(no);
 			
 		// requst 속성에 결과 데이터를 저장
 		request.setAttribute("todo", todo);
