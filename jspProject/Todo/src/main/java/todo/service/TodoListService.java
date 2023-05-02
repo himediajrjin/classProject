@@ -26,12 +26,15 @@ public class TodoListService {
 		
 		try {
 			conn = ConnectionProvider.getConnection();
-			System.out.println("conn : " + conn);
+			//System.out.println("conn : " + conn);
 			
 			list = dao.selectByAll(conn);
-			System.out.println(list);
+			//System.out.println(list);
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {

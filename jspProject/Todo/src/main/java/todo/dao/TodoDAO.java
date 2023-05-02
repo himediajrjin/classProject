@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import todo.domain.RequestTodo;
 import todo.domain.TodoDTO;
 import todo.util.ConnectionProvider;
 
@@ -32,11 +33,12 @@ public class TodoDAO {
 		List<TodoDTO> list = null;
 		
 		// SQL
-		String sql = "select * from tbl_todo";
+		String sql = "select * from tbl_todo"; // ? ? ?
 		
 		try {
 			// PreparedStatement
 			pstmt = conn.prepareStatement(sql);
+			// setXXX
 			
 			// 결과 받기
 			// ResultSet
@@ -48,7 +50,7 @@ public class TodoDAO {
 			while(rs.next()) {
 				int tno = rs.getInt("tno");
 				String todo = rs.getString("todo");
-				String duedate = rs.getString("duedate");
+				String duedate = rs.getString("duedate"); // 2023-05-05
 				boolean finished = rs.getBoolean("finished");
 				
 				TodoDTO dto = new TodoDTO(tno, todo, duedate, finished);
@@ -76,7 +78,55 @@ public class TodoDAO {
 		return list;
 	}
 	
-	public static void main(String[] args) throws SQLException {
+	
+	
+	
+	// RequestTodo 데이터를 받아서 insert 처리
+	public int insertTodo(Connection conn, RequestTodo todo) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		// insert sql
+		String sql = "INSERT INTO tbl_todo (todo, duedate) VALUES (?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, todo.getTodo());
+			pstmt.setString(2, todo.getDuedate());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+ 	public static void main(String[] args) throws SQLException {
 		
 		TodoDAO dao = TodoDAO.getInstance();
 		Connection conn = ConnectionProvider.getConnection();

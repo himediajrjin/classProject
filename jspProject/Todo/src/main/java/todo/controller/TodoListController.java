@@ -41,7 +41,7 @@ public class TodoListController extends HttpServlet {
 		
 		List<TodoDTO> list = listService.getList(); 
 		
-		System.out.println(list);
+		//System.out.println(list);
 		
 		// 3. 응답 데이터 request의 속성에 저장 : view로 데이터 전달
 		request.setAttribute("todoList", list);
