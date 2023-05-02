@@ -14,7 +14,7 @@
 
 	<c:forEach items="${todoList}" var="todo" >
 
-	<li><a href="${pageContext.request.contextPath}/todo/read?no=${todo.tno}">${todo.tno}. ${todo.todo} </a> ${todo.duedate} ${finished ? 'DONE' : 'NOT YET'} </li>
+	<li><a href="${pageContext.request.contextPath}/todo/read?no=${todo.tno}">${todo.tno}. ${todo.todo} </a> ${todo.duedate} ${todo.finished ? 'DONE' : 'NOT YET'} </li>
 	
 	</c:forEach>
 	

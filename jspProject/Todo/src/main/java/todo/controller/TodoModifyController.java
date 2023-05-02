@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import todo.domain.Todo;
 import todo.domain.TodoDTO;
+import todo.service.TodoUpdateService;
 import todo.service.TodoViewService;
 
 
@@ -18,9 +19,11 @@ import todo.service.TodoViewService;
 public class TodoModifyController extends HttpServlet {
 	
 	TodoViewService viewService;
+	TodoUpdateService updateService;
 	
 	public TodoModifyController() {
 		this.viewService = TodoViewService.getInstance();
+		this.updateService = TodoUpdateService.getInstance();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,18 +60,30 @@ public class TodoModifyController extends HttpServlet {
 		String duedate = request.getParameter("duedate");
 		String complete = request.getParameter("complete");
 		
-		Todo newTodo = new Todo(
+		TodoDTO todoDTO = new TodoDTO(
 				Integer.parseInt(noStr), 
 				todo, 
 				duedate, 
-				complete != null ? complete.equals("on") ? "done": "not" : "not");
+				complete != null ? ( complete.equals("on") ? true : false ) : false
+				);
 		
-		System.out.println(newTodo);
+//		Todo newTodo = new Todo(
+//				Integer.parseInt(noStr), 
+//				todo, 
+//				duedate, 
+//				complete != null ? complete.equals("on") ? "done": "not" : "not");
 		
-		// 서비스에 요청 : update
+//		System.out.println(newTodo);
 		
+		// 서비스에 요청 : update		
 		// 결과 받고
-		int result = 1;
+		int result = updateService.modify(todoDTO);
+		
+		if(result > 0) {
+			System.out.println("수정완료...");
+		} else {
+			System.out.println("수정실패");
+		}
 		
 		// redirect 처리
 		response.sendRedirect("list");

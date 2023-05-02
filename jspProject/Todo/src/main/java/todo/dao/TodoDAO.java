@@ -180,7 +180,7 @@ public class TodoDAO {
 			// set
 			pstmt.setString(1, todo.getTodo());
 			pstmt.setString(2, todo.getDuedate());
-			pstmt.setInt(3, todo.isFinished() ? 1 : 0);
+			pstmt.setBoolean(3, todo.isFinished());  // rs.getBoolean("finished") 0/1
 			pstmt.setInt(4, todo.getTno());
 			
 			// result
@@ -231,8 +231,13 @@ public class TodoDAO {
 		
 		
 		// selectByTno test
-		TodoDTO todo = dao.selectByTno(conn, 2);
-		System.out.println(todo);
+//		TodoDTO todo = dao.selectByTno(conn, 2);
+//		System.out.println(todo);
+		
+		
+		// update test
+		dao.updateByTno(conn, new TodoDTO(2, "청소 후 휴식", "2023-05-03", true));
+		System.out.println("수정완료...");
 		
 		
 		
