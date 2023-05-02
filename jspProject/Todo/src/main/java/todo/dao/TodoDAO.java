@@ -52,13 +52,13 @@ public class TodoDAO {
 			
 			// List<TodoDTO> 에 저장 반환
 			while(rs.next()) {
-				int tno = rs.getInt("tno");
-				String todo = rs.getString("todo");
-				String duedate = rs.getString("duedate"); // 2023-05-05
-				boolean finished = rs.getBoolean("finished");
-				
-				TodoDTO dto = new TodoDTO(tno, todo, duedate, finished);
-				list.add(dto);
+//				int tno = rs.getInt("tno");
+//				String todo = rs.getString("todo");
+//				String duedate = rs.getString("duedate"); // 2023-05-05
+//				boolean finished = rs.getBoolean("finished");
+//				
+//				TodoDTO dto = new TodoDTO(tno, todo, duedate, finished);
+				list.add(makeTodoDTO(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -103,11 +103,7 @@ public class TodoDAO {
 			
 			// if : 결과 행이 0 또는 1 일 때			
 			if(rs.next()) {
-				todo = new TodoDTO(
-						rs.getInt("tno"), 
-						rs.getString("todo"), 
-						rs.getString("duedate"), 
-						rs.getBoolean("finished"));
+				todo = makeTodoDTO(rs);
 			}
 			
 			
@@ -130,6 +126,17 @@ public class TodoDAO {
 		}
 		
 		return todo;
+	}
+	
+	// rs -> TodoDTO 생성 => 반환
+	private TodoDTO makeTodoDTO(ResultSet rs) throws SQLException {
+		
+		return new TodoDTO(
+				rs.getInt("tno"), 
+				rs.getString("todo"), 
+				rs.getString("duedate"), 
+				rs.getBoolean("finished"));
+		
 	}
 	
 	

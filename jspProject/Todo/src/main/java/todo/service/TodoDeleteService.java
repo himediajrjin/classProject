@@ -14,6 +14,14 @@ public class TodoDeleteService {
 		this.dao = TodoDAO.getInstance();
 	}
 	
+	private static TodoDeleteService service = new TodoDeleteService();
+	
+	public static TodoDeleteService getInstance() {
+		return service;
+	}
+	
+	
+	
 	// tno 전달받고
 	// dao delete 메소드에 요청
 	public int delete(int tno) {

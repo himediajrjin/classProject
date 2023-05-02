@@ -12,9 +12,18 @@ public class TodoListService {
 	
 	TodoDAO dao;
 
-	public TodoListService() {
+	private TodoListService() {
 		this.dao = TodoDAO.getInstance();
 	}
+	
+	private static TodoListService service = new TodoListService();
+	
+	public static TodoListService getInstance() {
+		return service;
+	}
+	
+	
+	
 	
 	public List<TodoDTO> getList(){
 		
