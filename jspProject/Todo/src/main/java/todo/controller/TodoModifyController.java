@@ -72,7 +72,7 @@ public class TodoModifyController extends HttpServlet {
 		System.out.println("TodoModifyController...doPost()...");
 
 		// 수정 Form에서 전달받고
-		request.setCharacterEncoding("utf-8");
+		// request.setCharacterEncoding("utf-8");
 
 		String noStr = request.getParameter("no");
 		String todo = request.getParameter("todo");
