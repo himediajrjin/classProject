@@ -24,9 +24,12 @@
 
 <a href="${pageContext.request.contextPath}/todo/register">Todo Register</a>
 
+<c:if test="${loginInfo eq null}">
 <a href="/app/login"> 로그인 </a>
+</c:if>
+<c:if test="${loginInfo ne null}">
 <a href="/app/logout"> 로그아웃 </a>
-
+</c:if>
 
 
 
