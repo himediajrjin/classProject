@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.domain.MemberDTO;
+
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
@@ -38,6 +40,11 @@ public class LoginController extends HttpServlet {
 		HttpSession session = request.getSession(); 
 		
 		// 인증처리 : id pw 같은 문자열 일때 인증되었다!
+		// 인증처리 : id, pw 값을 service 로 전달  -> dao 전달해서 MemberDTO 객체를 반환
+		
+		MemberDTO member = null;
+		
+		// MemberDTO => null 이면 회원이 아니다./ null 이 아니면 회원이다 -> 로그인 처리
 		if(mid.equals(pw)) {
 			// 회원이다!!!! -> HttpSession 객체에 회원정보를 저장
 			// 저장된 회원정보는 회원이 로그인 했다의 판단 기준으로 사용
