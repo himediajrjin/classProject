@@ -16,6 +16,11 @@ public class MemberRegisterService {
         this.dao = dao;
     }
 
+    // setter 이용해서 Dao 주입
+    public void setDao(Dao dao) {
+        this.dao = dao;
+    }
+
     // 등록 처리해주는 메소드 :
     // RegisterRequest (email, password, confirmPasswor, name)
     public void regist(RegisterRequest request){

@@ -80,6 +80,7 @@ public class Member {
         // 현재 저장되어 있는 비밀번호화 전달받은 현재 비밀번호를 비교
         if(this.password.equals(oldPassword)){
             this.password = newPassword;
+            System.out.println("수정되었습니다.");
         } else {
             System.out.println("현재 비밀번호와 입력하신 비밀번호가 일치하지 않습니다.");
         }
