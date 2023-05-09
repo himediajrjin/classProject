@@ -12,7 +12,7 @@ public class MemberManagerSpringMain1 {
 
     // 조립기 : 객체를 관리(생성, 주입, 제공...)
     static GenericXmlApplicationContext ctx =
-            new GenericXmlApplicationContext("classpath:appCtx.xml");
+            new GenericXmlApplicationContext("classpath:appCtx1.xml");
 
     public static void main(String[] args) {
         // 사용자 메뉴 입력
