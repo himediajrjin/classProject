@@ -38,6 +38,8 @@ public class MemberRegisterService {
         // dao => 저장
         dao.insert(newMember);
 
+        System.out.println("저장되었습니다.");
+
 
 
     }
