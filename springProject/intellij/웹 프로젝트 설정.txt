@@ -5,5 +5,12 @@
 2. build.gradle : 의존설정 
    - spring(core, context, webmvc, test, jdbc), log, lombok, jstl, fileupload, db
 3. spring 관련 설정
-   - 설정파일 생성 : root-context.xml, application-context.xml
+   - 설정파일 생성 : /WEB-INF/spring/
+       + root-context.xml 
+       + servlet-context.xml
    - web.xml : spring 설정파일 등록, Servlet 등록( mapping : "/")
+
+
+
+
+
