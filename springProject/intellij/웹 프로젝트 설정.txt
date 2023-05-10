@@ -16,6 +16,18 @@
        + Servlet 등록( mapping : "/" ) : servlet-context.xml
 
    - log4j2 설정 : log4j2.xml 설정
+-------------------------------------------------------------------------------
+웹 화면 + 처리
+
+- Controller : @Controller, @RequestMapping
+- View( JSP )
+- Model : Service, DAO
+
+
+
+
+
+
 
 
 

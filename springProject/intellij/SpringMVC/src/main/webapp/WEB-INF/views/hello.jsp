@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: hi
   Date: 2023-05-10
-  Time: 오후 12:18
+  Time: 오후 3:54
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,13 +12,9 @@
 </head>
 <body>
 
-<form method="post">
-    
-    id <input type="text" name="uid"> <br>
-    pw <input type="password" name="pw"> <br>
-    <input type="submit" value="로그인">
+  <h1>view page : hello.jsp </h1>
 
-</form>
+  <h2> ${greeting} </h2>
 
 </body>
 </html>
