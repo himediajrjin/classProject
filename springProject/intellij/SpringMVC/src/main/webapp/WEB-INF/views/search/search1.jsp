@@ -13,6 +13,10 @@
 <body>
 
   <h1>result : ${result}</h1>
+  <h1>page : ${page}</h1>
+  <h1>userRequest : ${userRequest}  </h1>
+  <h1>userRequest : ${req}  </h1>
+
 
 </body>
 </html>
