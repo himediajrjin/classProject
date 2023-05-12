@@ -31,9 +31,9 @@ public class TodoModifyController {
 
         log.info("modifyTodoRequest : " + modifyTodoRequest);
 
-        return "todo/modify";
+        //return "todo/modify";
 
-        //return "redirect:/todo/list";
+        return "redirect:/todo/list";
     }
 
     @ModelAttribute("strData")
