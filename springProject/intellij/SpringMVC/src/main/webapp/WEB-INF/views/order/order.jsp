@@ -22,6 +22,11 @@
         주의 사항 - ${orderItem.remark} <br>
     </c:forEach>
 
+  <h3>배송지</h3>
+    우편번호 - ${order.address.zipcode} <br>
+    주소1 - ${order.address.address1} <br>
+    주소2 - ${order.address.address2}
+
 
 
 </body>
