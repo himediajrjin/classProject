@@ -49,6 +49,12 @@ public class SearchController {
         model.addAttribute("result", keyword+tno);
         model.addAttribute("page", page);
 
+
         return "search/search1";
+    }
+
+    private void test(){
+        Model m = null;
+        search1(m, "", "", 1, null, new UserRequest());
     }
 }
