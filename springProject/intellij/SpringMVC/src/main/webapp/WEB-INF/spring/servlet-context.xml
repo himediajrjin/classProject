@@ -17,7 +17,7 @@
     <!-- localhost:8080/css/default.css -->
     <!-- /css/default.css -->
     <!-- /uploadfile/report/erd.PNG -->
-    <mvc:resources mapping="/uploadfile/**" location="/uploadfile"></mvc:resources>
+    <mvc:resources mapping="/uploadfile/**" location="/uploadfile/"></mvc:resources>
 
     <!--view 설정-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -32,6 +32,17 @@
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
+
+
+    <!-- 회원 로그인 여부 체크 interceptor 등록 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/mypage/**"/>
+            <mvc:exclude-mapping path="/mypage/help/**"/>
+            <bean class="com.hi.app.interceptor.AuthCheckInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 
 
 

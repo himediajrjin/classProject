@@ -12,10 +12,11 @@
 </head>
 <body>
 
-    <h1>과제 제출 1</h1>
+
+    <h1>과제 제출 3</h1>
 
     <%-- method="POST" enctype="multipart/form-data" 필수!!! --%>
-    <form action="/report/submit1" method="POST" enctype="multipart/form-data">
+    <form action="/report/submit3" method="POST" enctype="multipart/form-data">
 
         학번 : <input type="text" name="snum"> <br>
         이름 : <input type="text" name="sname"> <br>
@@ -24,6 +25,34 @@
 
     </form>
 
+    <hr>
+
+<h1>과제 제출 2</h1>
+
+<%-- method="POST" enctype="multipart/form-data" 필수!!! --%>
+<form action="/report/submit2" method="POST" enctype="multipart/form-data">
+
+    학번 : <input type="text" name="snum"> <br>
+    이름 : <input type="text" name="sname"> <br>
+    파일 : <input type="file" name="report"> <br>
+    <input type="submit">
+
+</form>
+
+<hr>
+
+
+<h1>과제 제출 1</h1>
+
+<%-- method="POST" enctype="multipart/form-data" 필수!!! --%>
+<form action="/report/submit1" method="POST" enctype="multipart/form-data">
+
+    학번 : <input type="text" name="snum"> <br>
+    이름 : <input type="text" name="sname"> <br>
+    파일 : <input type="file" name="report"> <br>
+    <input type="submit">
+
+</form>
 
 
 </body>
