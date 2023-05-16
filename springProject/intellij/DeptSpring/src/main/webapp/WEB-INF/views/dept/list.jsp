@@ -37,7 +37,7 @@
               <td>${dept.dname}</td>
               <td>${dept.loc}</td>
               <td>
-                  수정
+                  <a href="/dept/modify?no=${dept.deptno}">수정</a>
                   삭제
               </td>
           </tr>
