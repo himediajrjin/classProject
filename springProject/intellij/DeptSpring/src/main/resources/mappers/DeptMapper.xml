@@ -50,6 +50,11 @@
                     <!--loc like concat('%', #{keyword}, '%')-->
                     <include refid="searchLoc"/>
                 </if>
+                <if test="searchType == 'both'">
+                    <include refid="searchDname"/>
+                    <include refid="searchLoc"/>
+                </if>
+
 
             </if>
         </where>
@@ -64,6 +69,35 @@
         or loc like concat('%', #{keyword}, '%')
     </sql>
 
+    
+    <select id="selectByDeptnos"
+            parameterType="list"
+            resultType="com.hi.deptspring.deptspring.domain.DeptDTO"
+    >
+        select * from dept
+        <!--
+        delete from dept
+        update dept set dname='개발팀'
+        -->
+
+        <where>
+            <if test="list != null and list.size != 0">
+                deptno in
+                <foreach collection="list"
+                         item="item"
+                         index="index"
+                         separator=","
+                         open="("
+                         close=")">
+                    #{item}
+                </foreach>
+
+            </if>
+        </where>
+
+    </select>
+    
+    
 
 
 

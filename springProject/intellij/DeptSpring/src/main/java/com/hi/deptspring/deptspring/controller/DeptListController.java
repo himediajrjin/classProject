@@ -42,7 +42,8 @@ public class DeptListController {
         log.info(">>>>>  deptSearchOption : " + deptSearchOption);
 
 
-        model.addAttribute("list", listService.getList());
+        //model.addAttribute("list", listService.getList());
+        model.addAttribute("list", listService.getSearchList(searchOption));
     }
 
 }

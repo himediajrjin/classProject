@@ -16,6 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -37,6 +38,24 @@ public class ConnectionTest {
 
     @Autowired(required = false)
     private DeptMapper deptMapper;
+
+
+
+
+    @Test
+    public void selectByDeptnosTest(){
+
+        List<Integer> deptnos = new ArrayList<>();
+        deptnos.add(10);
+        deptnos.add(30);
+        deptnos.add(50);
+        deptnos.add(53);
+
+        List<DeptDTO> list = deptMapper.selectByDeptnos(deptnos);
+        log.info(list);
+
+    }
+
 
 
     @Test

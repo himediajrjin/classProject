@@ -34,6 +34,7 @@
         <select name="searchType">
             <option value="dname">부서이름</option>
             <option value="loc">부서위치</option>
+            <option value="both">이름+위치</option>
         </select>
         <input type="text" name="keyword">
         <input type="submit" value="검색">

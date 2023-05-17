@@ -22,6 +22,12 @@ public interface DeptMapper {
     // deptno 컬럼으로 검색 => DeptDTO
     DeptDTO selectByDeptno(int deptno);
 
+
+    List<DeptDTO> selectByDeptnos(List<Integer> deptnos);
+
+
+
+
     // DeptRegistRequest 를 받아서 insert 해주는 메소드
     int insertDept(DeptRegistRequest request);
 
