@@ -39,8 +39,24 @@ public class ConnectionTest {
 
 
     @Test
+    public void deptInsertTest(){
+
+        DeptDTO dept = DeptDTO.builder().dname("test").loc("서울").build();
+        log.info(">>> 객체 생성 : " + dept);
+
+        deptMapper.insertDept2(dept);
+        log.info(">>> insert 후 DeptDTO : " + dept);
+        // dept.getDeptno() -> 다른 테이블의 FK 값으로 사용
+        // insert
+        // insert
+
+    }
+
+
+    @Test
     public void getDeptListTest(){
-        List<DeptDTO> list = deptMapper.selectAll();
+        //List<DeptDTO> list = deptMapper.selectAll2();
+        List<DeptDTO> list = deptMapper.selectAll2();
         log.info(">>>>>  " + list);
 
         log.info(deptMapper.selectByDeptno(10));
