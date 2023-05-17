@@ -1,6 +1,7 @@
 package com.hi.deptspring;
 
 import com.hi.deptspring.deptspring.domain.DeptDTO;
+import com.hi.deptspring.deptspring.domain.DeptSearchOption;
 import com.hi.deptspring.deptspring.mapper.DeptMapper;
 import com.hi.deptspring.deptspring.mapper.TimeMapper;
 import com.hi.deptspring.deptspring.mapper.TimeMapper2;
@@ -37,6 +38,38 @@ public class ConnectionTest {
     @Autowired(required = false)
     private DeptMapper deptMapper;
 
+
+    @Test
+    public void seachDeptTest(){
+
+        DeptSearchOption option1 = DeptSearchOption
+                .builder()
+                .searchType("dname")
+                .keyword("ACC")
+                .build();
+
+        DeptSearchOption option3 = new DeptSearchOption();
+
+        DeptSearchOption option2 = DeptSearchOption
+                .builder()
+                .searchType("loc")
+                .keyword("NEW")
+                .build();
+
+        // 부서 이름 검색
+        List<DeptDTO> list1 = deptMapper.selectByOption(option1);
+        log.info(list1);
+
+        // 부서 위치 검색
+        List<DeptDTO> list2 = deptMapper.selectByOption(option2);
+        log.info(list2);
+        
+        // 검색어가 없는 검색
+        List<DeptDTO> list3 = deptMapper.selectByOption(option3);
+        log.info(list3);
+        
+
+    }
 
     @Test
     public void deptInsertTest(){
