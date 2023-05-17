@@ -22,8 +22,9 @@ public class DeptListController {
     @RequestMapping("/dept/list")
     public void getListPage(
             Model model,
-            @RequestParam("searchType") String searchType,
-            @RequestParam("keyword") String keyword
+            @RequestParam(value = "searchType", defaultValue = "") String searchType,
+            @RequestParam(value = "keyword", defaultValue = "") String keyword,
+            DeptSearchOption deptSearchOption
     ){
         log.info("GET  /dept/list");
 
@@ -34,6 +35,11 @@ public class DeptListController {
                 .build();
 
         log.info(">>>>>  searchOption : "+searchOption);
+
+        deptSearchOption.setKeyword(
+                deptSearchOption.getKeyword() != null && deptSearchOption.getKeyword().trim().length()>0 ? deptSearchOption.getKeyword() : null);
+        deptSearchOption.setSearchType(deptSearchOption.getKeyword() != null && deptSearchOption.getKeyword().trim().length()>0 ? deptSearchOption.getSearchType() : null);
+        log.info(">>>>>  deptSearchOption : " + deptSearchOption);
 
 
         model.addAttribute("list", listService.getList());
