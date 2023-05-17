@@ -43,16 +43,28 @@
             <if test="searchType != null and keyword != null">
 
                 <if test="searchType == 'dname'">
-                    dname like concat('%', #{keyword}, '%')
+                    <!--dname like concat('%', #{keyword}, '%')-->
+                    <include refid="searchDname"/>
                 </if>
                 <if test="searchType == 'loc'">
-                    loc like concat('%', #{keyword}, '%')
+                    <!--loc like concat('%', #{keyword}, '%')-->
+                    <include refid="searchLoc"/>
                 </if>
 
             </if>
         </where>
 
     </select>
+
+    <sql id="searchDname">
+        or dname like concat('%', #{keyword}, '%')
+    </sql>
+
+    <sql id="searchLoc">
+        or loc like concat('%', #{keyword}, '%')
+    </sql>
+
+
 
 
 
