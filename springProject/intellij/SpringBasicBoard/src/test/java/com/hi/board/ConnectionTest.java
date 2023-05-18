@@ -1,5 +1,6 @@
 package com.hi.board;
 
+import com.hi.board.domain.BoardDTO;
 import com.hi.board.domain.RequestRegBoard;
 import com.hi.board.mapper.BoardMapper;
 import lombok.extern.log4j.Log4j2;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -25,6 +27,17 @@ public class ConnectionTest {
 
     @Autowired(required = false)
     private BoardMapper boardMapper;
+
+
+
+    @Test
+    public void deptListTest(){
+
+        List<BoardDTO> list = boardMapper.selectAll();
+
+        log.info(list);
+
+    }
 
 
     @Test
