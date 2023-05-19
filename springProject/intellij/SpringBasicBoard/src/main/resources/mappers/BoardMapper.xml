@@ -32,7 +32,11 @@
 
         update tbl_board
 
-        set title=#{title}, content=#{content}, writer=#{writer}, file=#{filename}
+        set title=#{title},
+            content=#{content},
+            writer=#{writer},
+            file=#{filename},
+            updatedate=now()
 
         where bno=#{bno}
 
