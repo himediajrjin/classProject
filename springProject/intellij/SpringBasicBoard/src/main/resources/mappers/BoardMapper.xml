@@ -8,6 +8,12 @@
     >
         select * from tbl_board
     </select>
+    
+    <select id="selectByBno"
+            resultType="com.hi.board.domain.BoardDTO"
+    >
+        select * from tbl_board where bno=#{bno}
+    </select>
 
 
     <insert id="insertBoard"
