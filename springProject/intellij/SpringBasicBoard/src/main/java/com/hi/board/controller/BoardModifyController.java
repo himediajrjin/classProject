@@ -1,6 +1,8 @@
 package com.hi.board.controller;
 
+import com.hi.board.domain.RequestModifyRequest;
 import com.hi.board.service.BoardReadService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/board/modify")
+@Log4j2
 public class BoardModifyController {
 
     @Autowired
@@ -26,7 +29,12 @@ public class BoardModifyController {
     }
 
     @PostMapping
-    public String modify(){
+    public String modify(
+            RequestModifyRequest modifyRequest
+    ){
+
+        log.info(modifyRequest);
+
         // 사용자 입력한 BoardDTO Service 전달 -> update
         return "redirect:/board/list";
     }
