@@ -1,9 +1,6 @@
 package com.hi.board.mapper;
 
-import com.hi.board.domain.BoardDTO;
-import com.hi.board.domain.PageOption;
-import com.hi.board.domain.RequestModifyRequest;
-import com.hi.board.domain.RequestRegBoard;
+import com.hi.board.domain.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,7 +15,7 @@ public interface BoardMapper {
 
     List<BoardDTO> selectList(PageOption option);
 
-    int selectTotalCount();
+    int selectTotalCount(BoardSearchOption searchOption);
 
     List<BoardDTO> selectAll();
 

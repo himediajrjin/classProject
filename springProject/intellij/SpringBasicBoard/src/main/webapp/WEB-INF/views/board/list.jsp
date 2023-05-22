@@ -58,15 +58,15 @@
     <div class="paging">
 
         <c:if test="${page.prev}">
-        <a href="/board/list?p=${page.startNum-1}">이전</a>
+        <a href="/board/list?p=${page.startNum-1}&searchType=${param.searchType}&keyword=${param.keyword}">이전</a>
         </c:if>
 
         <c:forEach begin="${page.startNum}" end="${page.endNum}" var="num">
-           <a href="/board/list?p=${num}">[ ${num} ]</a>
+           <a href="/board/list?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}">[ ${num} ]</a>
         </c:forEach>
 
         <c:if test="${page.next}">
-        <a href="/board/list?p=${page.endNum+1}">다음</a>
+        <a href="/board/list?p=${page.endNum+1}&searchType=${param.searchType}&keyword=${param.keyword}">다음</a>
         </c:if>
 
     </div>

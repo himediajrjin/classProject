@@ -37,8 +37,33 @@
         limit #{startNum}, #{count}
     </select>
 
-    <select id="selectTotalCount" resultType="int">
+    <select id="selectTotalCount"
+            parameterType="com.hi.board.domain.BoardSearchOption"
+            resultType="int">
+
         select count(*) from tbl_board
+
+        <where>
+
+            <if test="searchType != null and keyword != null">
+
+                <if test="searchType == 'title'">
+                    title like concat('%', #{keyword} ,'%')
+                </if>
+
+                <if test="searchType == 'content'">
+                    content like concat('%', #{keyword} ,'%')
+                </if>
+
+                <if test="searchType == 'writer'">
+                    writer like concat('%', #{keyword} ,'%')
+                </if>
+
+            </if>
+
+
+        </where>
+
     </select>
 
     

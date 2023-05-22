@@ -41,7 +41,7 @@ public class BoardListController {
 
 
 
-        BoardListPage page = listService.getPage(pageNum);
+        BoardListPage page = listService.getPage(pageNum, searchOption);
 
         log.info(page);
 
