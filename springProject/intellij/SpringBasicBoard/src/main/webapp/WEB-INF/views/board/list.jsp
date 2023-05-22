@@ -22,6 +22,7 @@
     <h1>게시판</h1>
     <hr>
 
+
     <table border="1">
         <tr>
             <th>번호</th>
@@ -30,7 +31,7 @@
             <th>작성일</th>
         </tr>
 
-        <c:forEach items="${list}" var="board">
+        <c:forEach items="${page.list}" var="board">
 
             <tr>
                 <td>${board.bno}</td>
@@ -42,6 +43,14 @@
         </c:forEach>
 
     </table>
+
+    <div class="paging">
+
+        <c:forEach begin="${page.startNum}" end="${page.endNum}" var="num">
+           <a href="/board/list?p=${num}">[ ${num} ]</a>
+        </c:forEach>
+
+    </div>
 
 
 

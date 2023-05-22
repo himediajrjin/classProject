@@ -14,7 +14,7 @@ public class BoardListService {
     @Autowired
     private BoardMapper boardMapper;
 
-    private final int countPerPage = 5;
+    private final int countPerPage = 5; // 한 페이지에 담을 게시물의 개수
 
 
     public List<BoardDTO> getBoadList(){
@@ -28,6 +28,7 @@ public class BoardListService {
         // 요청 페이지의 리스트 항목 : List<BoardDTO>
         List<BoardDTO> list = boardMapper.selectList((requestPageNum-1)*countPerPage, countPerPage);
         int totalCount = boardMapper.selectTotalCount();
+        // 전체 게시글 개수 -> 전체 페이지의 개수
 
         BoardListPage page = new BoardListPage(
                 countPerPage,
