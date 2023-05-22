@@ -22,6 +22,17 @@
     <h1>게시판</h1>
     <hr>
 
+    <div class="searchArea">
+        <form>
+        <select name="searchType">
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+            <option value="writer">작성자</option>
+        </select>
+        <input type="text" name="keyword">
+        <input type="submit" value="검색">
+        </form>
+    </div>
 
     <table border="1">
         <tr>
@@ -46,11 +57,21 @@
 
     <div class="paging">
 
+        <c:if test="${page.prev}">
+        <a href="/board/list?p=${page.startNum-1}">이전</a>
+        </c:if>
+
         <c:forEach begin="${page.startNum}" end="${page.endNum}" var="num">
            <a href="/board/list?p=${num}">[ ${num} ]</a>
         </c:forEach>
 
+        <c:if test="${page.next}">
+        <a href="/board/list?p=${page.endNum+1}">다음</a>
+        </c:if>
+
     </div>
+
+
 
 
 
