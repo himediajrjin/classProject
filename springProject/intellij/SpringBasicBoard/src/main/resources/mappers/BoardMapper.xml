@@ -105,7 +105,6 @@
 
         set title=#{title},
             content=#{content},
-            writer=#{writer},
             file=#{filename},
             updatedate=now()
 
