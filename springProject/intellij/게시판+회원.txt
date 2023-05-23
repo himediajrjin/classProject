@@ -5,8 +5,12 @@
    uid, pw, uname, uphoto
 
 
-2. 로그인 : 인터셉터 
-              /board/** <= 세션을 확인 
+2. 로그인 : 
+
+	/login : get | post
+
+
+인터셉터 :  /board/** <= 세션을 확인 
 
 3. tbl_board => 컬럼추가 idx 외래키
    Member 테이블의  idx 참조
