@@ -43,7 +43,7 @@
         console.log('난수', num)
 
 
-        for(let i=0; i<5 ; i++){
+        for(let i=0; i<0 ; i++){
 
             // 사용자로 부터 숫자를 입력 받는다.
             let userNum = prompt('숫자를 입력해주세요.')
@@ -68,7 +68,19 @@
         }
 
 
+        // 짝수 홀수 판별
+        let num2 = prompt('숫자를 입력해주세요.')
 
+        switch (num2%2) { // num2 : string -> number
+            case 0:
+                console.log('짝수')                
+                break;
+            case 1:
+                console.log('홀수')
+                break;        
+        }
+
+        console.log( num2%2==0 ? '짝수' : '홀수' )
 
 
 
