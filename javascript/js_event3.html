@@ -32,7 +32,14 @@
             const langs = document.querySelectorAll('input[name=lang]')
 
             langs.forEach((radio) => {
-                
+
+                radio.addEventListener('change', (event) => {
+                    const currRadio = event.currentTarget
+                    if(currRadio.checked){
+                        checkedMsg.textContent = `checked : ${currRadio.value}`
+                    }
+                })
+
             })
 
         })
