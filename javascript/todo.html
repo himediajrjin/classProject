@@ -8,6 +8,8 @@
 
     <script>
 
+        let cnt = 0
+
         document.addEventListener('DOMContentLoaded', () => {
 
             // 문서객체 생성
@@ -27,6 +29,10 @@
                 // 동적으로 추가할 엘리먼트를 생성
                 const newDiv = document.createElement('div')
                 newDiv.style.margin = '5px'
+
+                const key = cnt++
+                newDiv.setAttribute('data-key', key)
+
                 const todoSpan = document.createElement('span')
                 todoSpan.textContent = input.value
                 todoSpan.style.margin = '3px'
@@ -44,6 +50,20 @@
 
 
                 // 이벤트 적용
+                btn.addEventListener('click', () => {
+                    const delEl = document.querySelector(`div[data-key="${key}"]`)
+                    todoList.removeChild(delEl)
+                    alert('삭제되었습니다.')
+                })
+
+                checkbox.addEventListener('change', (event) => {
+                    // 서버로 완료 요청 => 응답(200) 
+                    todoSpan.style.textDecoration = event.currentTarget.checked ? 'line-through' : ''
+                })
+
+
+
+
 
 
                 todoList.appendChild(newDiv)
