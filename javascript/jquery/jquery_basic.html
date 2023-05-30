@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script>
+
+        // $() -> 팩토리 함수 : jquery 객체를 생성해주는 메소드
+
+        // window.onload=function(){}
+
+        // document 객체를 jquery 객체로 생성
+        $(document).ready(function(){
+            // onload = function(){}
+            alert('onload!!!')
+
+            // $('선택자').메소드()
+            $('*').css('color', 'red') // setter
+            //   DOM.style.color = 'red'
+            // $('*').css('color')  // getter
+
+
+
+
+
+
+        })
+        
+    </script>
+
+</head>
+<body>
+
+    <h1>header - 0</h1>
+    <h1>header - 1</h1>
+    <h1>header - 2</h1>
+    <h1>header - 3</h1>
+    <h1>header - 4</h1>
+    
+</body>
+</html>
