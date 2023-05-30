@@ -19,7 +19,7 @@
             //alert('onload!!!')
 
             // $('선택자').메소드()
-            $('*').css('color', 'red') // setter
+            // $('*').css('color', 'red') // setter
             //   DOM.style.color = 'red'
             // $('*').css('color')  // getter
 
@@ -72,12 +72,55 @@
             $('#links').html(output)
 
 
+            // $('선택자').each(콜백(index, item))
+            $('h1').each(function(index, item){
+                console.log(index, item.innerHTML)
+                console.log(index, $(item).html())
+                //$(item).html(index)
+            })
+
+
+            // 필터 선택 메소드
+            $('h1').first().css('background', 'black').css('color', 'yellow')
+            $('h1').last().css('background', 'yellow')
+            $('h1').eq(3).css('background', 'orange')
+
+
+            $('h2').css('background', 'orange').filter(':even').css('color', 'white')
+
+            $('h3').filter(function(index, item){
+                // 논리값을 반환
+                return index % 3 == 0
+            }).css({
+                backgroundColor : 'black',
+                color : 'white'
+            })
+
         })
         
     </script>
 
 </head>
 <body>
+
+    <h3>header3 - 0</h3>
+    <h3>header3 - 1</h3>
+    <h3>header3 - 2</h3>
+    <h3>header3 - 3</h3>
+    <h3>header3 - 4</h3>
+    <h3>header3 - 5</h3>
+    <h3>header3 - 6</h3>
+    <h3>header3 - 7</h3>
+    <h3>header3 - 8</h3>
+
+    <hr>
+
+    <h2>header2 - 0</h2>
+    <h2>header2 - 1</h2>
+    <h2>header2 - 2</h2>
+    <h2>header2 - 3</h2>
+
+    <hr>
 
     <div id="links"></div>
 
