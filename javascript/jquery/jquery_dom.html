@@ -99,9 +99,25 @@
 
                 console.log(index, html)
 
+                console.log('type', typeof html)
+                console.log('this', typeof this)
+
                 $(this).html('<h1>'+html+index+'</h1>')
 
             })
+
+            $('#btn1').click(function(event){
+                //alert('btn1 click')
+                $('#menu1').remove();
+            });
+
+            $('#btn2').click(function(event){
+                //alert('btn2 click')
+                $('#menu2').empty()
+                console.log('check', $('#menu1').html())
+            });
+
+            
 
 
         })
@@ -110,6 +126,9 @@
 
 </head>
 <body>
+
+    <button id="btn1">menu1 삭제</button>
+    <button id="btn2">menu2 내용 삭제</button>
 
     <div id="menu1">
         <span>Menu Text1</span>
