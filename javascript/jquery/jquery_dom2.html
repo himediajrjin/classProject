@@ -30,6 +30,24 @@
             $('<img>').attr('src', '../image/mini.jpg').addClass('img').appendTo('#wrap')
 
 
+            // target 캐스팅 -> 새로운 문서객체 추가 
+            // : (target).append(dom)
+            let html1 = '<a href="#">test</a>'
+            let html2 = '<p>TEST</p>'
+            //let html3 = '<div>DIV-0</div><div>DIV-1</div>'
+            $('body').append('<h3>안녕하세요!!!!</h3>')
+            $('body').append('<hr>', html1, '<hr>', html2, '<hr>')
+
+            let links = [
+                {name: '네이버', url:'https://www.naver.com'},
+                {name: '다음', url:'https://www.daum.net'},
+                {name: '구글', url:'https://www.google.com'}
+            ]
+
+            $('div').append(function(index){
+                return '<h3><a href="'+links[index].url+'">'+links[index].name+'</a></h3>'
+            })
+
         })
         
 
@@ -39,6 +57,14 @@
 
 </head>
 <body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+
+
+    <hr>
+
     <div id="wrap"></div>
     
     

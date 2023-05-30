@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <style>
+        h1 {
+            border: 5px solid #AAA;
+        }
+
+        .over {
+            background-color: aquamarine;
+            color: blue;
+        }
+    </style>
+
+    <script>
+
+        $(document).ready(function(){
+
+            // h1 캐스팅 -> click 이벤트 연결
+            $('h1').on('click', function(){
+                //alert('h1 Click!!!')
+                // this -> 이벤트가 발생한 엘리먼트 객체를 가르킨다!
+                $(this).html(function(index, html){
+                    return html+'+'
+                })
+            })
+
+            $('h1').on({
+                mouseenter : function(){
+                    console.log('이벤트 영역으로 진입')
+                    $(this).addClass('over')
+                },
+                mouseleave : function(){    
+                    console.log('이벤트 영역에서 벗어남')
+                    $(this).removeClass('over')
+                }
+            })
+
+        })
+
+    </script>
+
+</head>
+<body>
+
+    <h1>header-0</h1>
+    <h1>header-1</h1>
+    <h1>header-2</h1>
+    
+</body>
+</html>
