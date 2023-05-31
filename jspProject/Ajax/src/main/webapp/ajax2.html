@@ -10,21 +10,39 @@
 	
 	$(document).ready(function(){
 		
-		
-		// $.ajax(option)
-		$.ajax({
-			url: 'parmeter.jsp',
-			type: 'GET', // GET POST PUT DELETE, 생략 가능=> 기본 값 get
-			data: {
-				name : 'tea',
-				price : 3000    // ?name=tea&price=3000
-			} ,  // 요청페이지로 전달하는 파라미터 
-			success: function(response){
-				
-				$('body').append(response)
-				
-			}
+		$('#btn').click(function(){
+			
+			// name
+			let name = $('#name').val()
+			// price 
+			let price = $('#price').val()
+			
+			// 비동기 통신
+			// $.ajax(option)
+			$.ajax({
+				url: 'parmeter.jsp',
+				type: 'GET', // GET POST PUT DELETE, 생략 가능=> 기본 값 get
+				data: {
+					name : name,
+					price : price    // ?name=tea&price=3000
+				} ,  // 요청페이지로 전달하는 파라미터 
+				success: function(response){
+					
+					$('body').append("<h4>"+response+"</h4>")
+					
+				}
+			})
+			
+			
+			
+			
+			
+			
+			
 		})
+		
+		
+		
 		
 		
 		
@@ -40,6 +58,14 @@
 
 	<h1>메뉴</h1>
 	<hr>
+	이름 <input type="text" id="name"> 
+	가격 <input type="number" id="price"> 
+	<button id="btn">등록</button>	
+	<hr>
 
 </body>
 </html>
+
+
+
+
