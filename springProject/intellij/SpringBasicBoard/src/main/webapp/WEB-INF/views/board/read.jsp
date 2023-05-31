@@ -57,6 +57,26 @@
         </tr>
     </table>
 
+    <hr>
+
+    <div id="replyArea">
+        <h3>댓글</h3>
+        <hr>
+        <div>
+            <form id="replyRegForm">
+                <input type="text" id="bno" value="">
+                <input type="text" id="midx" value="">
+                <input type="text" id="reply" >
+                <input type="submit">
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+
     <a href="/board/list">LIST</a>
 
     <c:if test="${loginInfo.idx eq article.memidx}">
